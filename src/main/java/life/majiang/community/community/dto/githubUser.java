@@ -1,4 +1,4 @@
-package life.majiang.community.community.Controller.dto;
+package life.majiang.community.community.dto;
 
 public class githubUser {
     private String name;

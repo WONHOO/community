@@ -1,14 +1,13 @@
 package life.majiang.community.community.pprovider;
 
 import com.alibaba.fastjson.JSON;
-import life.majiang.community.community.Controller.dto.accessTokenDTO;
-import life.majiang.community.community.Controller.dto.githubUser;
+import life.majiang.community.community.dto.accessTokenDTO;
+import life.majiang.community.community.dto.githubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
 
 import java.io.IOException;
-import java.lang.reflect.AccessibleObject;
 
 @Component
 public class githubProvider {
