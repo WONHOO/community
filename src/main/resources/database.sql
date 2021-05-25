@@ -10,3 +10,7 @@ create table user
 		primary key (id)
 );
 
+//
+
+alter table USER
+	add bio varchar(256);
