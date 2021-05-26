@@ -1,17 +1,15 @@
-package life.majiang.community.community.Controller;
+package life.majiang.community.controller;
 
-import life.majiang.community.community.dto.accessTokenDTO;
-import life.majiang.community.community.dto.githubUser;
-import life.majiang.community.community.mapper.UserMapper;
-import life.majiang.community.community.model.User;
-import life.majiang.community.community.pprovider.githubProvider;
+import life.majiang.community.dto.accessTokenDTO;
+import life.majiang.community.dto.githubUser;
+import life.majiang.community.mapper.UserMapper;
+import life.majiang.community.model.User;
+import life.majiang.community.provider.githubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +46,7 @@ public class AuthorizeController {
         githubUser githubUser = githubProvider.getUser(accessToken);
 
         System.out.println(githubUser.getName()+"test");
-        if(githubUser != null){
+        if(githubUser != null && githubUser.getId() != null){
             User user = new User();
             String token = UUID.randomUUID().toString();
             user.setToken(token);
@@ -56,6 +54,7 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
+            user.setAvatarUrl(githubUser.getAvatar_url());
             userMapper.insert(user);
             response.addCookie(new Cookie("token",token));
 //            request.getSession().setAttribute("user",githubUser);
