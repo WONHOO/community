@@ -13,20 +13,25 @@
 <div th:insert="~{navigation::nav}"></div>
 <div class="container-fluid main">
     <div class="row">
+
+
+<!--        分隔线-------------------------------------------------------------------->
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
 
-            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h2>
-            <hr>
+            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span>发现</h2><hr>
+
+
             <div class="media" th:each="question : ${pagination.questions}">
                 <div class="media-left">
                     <a href="#">
                         <img class="media-object img-rounded"
                              th:src="${question.user.avatarUrl}">
-<!--                        <span th:text="${question.user.avatarUrl}"></span>-->
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" th:text="${question.title}"></h4>
+                    <h4 class="media-heading">
+                        <a th:href="@{'question/'+ ${question.id}}" th:text="${question.title}"></a>
+                    </h4>
                     <span th:text="${question.description}"></span><br>
                     <span class="text-desc"><span th:text="${question.commentCount}"></span>个回复 ·
                         <span th:text="${question.viewCount}"></span>次浏览 ·
@@ -66,9 +71,22 @@
                 </ul>
             </nav>
         </div>
+
+
+
+
+
+<!--        分隔线-------------------------------------------------------------------->
+
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h3>热门话题</h3>
         </div>
+
+
+<!--        分隔线-------------------------------------------------------------------->
+
+
+
     </div>
 </div>
 </body>
