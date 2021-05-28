@@ -36,10 +36,10 @@ public class PublishController {
 
 
 
-//    @GetMapping("/publish")
-//    public String publish() {
-//        return "publish";
-//    }
+    @GetMapping("/publish")
+    public String publish() {
+        return "publish";
+    }
 
     @PostMapping("/publish")
     public String doPublish(
