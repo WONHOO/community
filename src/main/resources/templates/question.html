@@ -26,6 +26,11 @@
             </span>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
+<!--                <textarea style="display:none;" th:utext="${question.description}"></textarea>-->
+                                <textarea th:utext="${question.description}"></textarea>
+            </div>
+
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <a th:href="@{'/publish/'+${question.id}}" class="community-menu"
