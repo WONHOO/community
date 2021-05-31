@@ -13,7 +13,7 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
     @GetMapping("question/{id}")
-    public String Question(@PathVariable("id") Integer id,
+    public String Question(@PathVariable("id") Long id,
                            Model model){
         QuestionDTO questionDTO = questionService.getById(id);
         //累加阅读数

@@ -1,7 +1,6 @@
 package life.majiang.community.dto;
 
 import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 @Data
@@ -15,13 +14,9 @@ public class PaginationDTO {
     private List<Integer> pages = new ArrayList<>();
     private Integer totalPage;
     public void setPagination(Integer totalPage, Integer page) {
-
-
-
         this.totalPage = totalPage;
         this.page = page;
         pages.add(page);
-
 
         for (int i = 1; i <= 3; i++) {
             if (page - i > 0) {
