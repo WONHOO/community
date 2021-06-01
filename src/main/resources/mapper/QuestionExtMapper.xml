@@ -17,14 +17,14 @@
     <result column="LIKE_COUNT" jdbcType="INTEGER" property="likeCount" />
     <result column="TAG" jdbcType="VARCHAR" property="tag" />
   </resultMap>
-  <update id="incView" parameterType="map">
+  <update id="incView" parameterType="life.majiang.community.model.Question">
 
     update QUESTION
     set
     VIEW_COUNT = VIEW_COUNT + #{viewCount,jdbcType=INTEGER}
     where id = #{id}
   </update>
-  <update id="incCommentCount" parameterType="map">
+  <update id="incCommentCount" parameterType="life.majiang.community.model.Question">
 
     update QUESTION
     set
