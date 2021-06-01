@@ -75,39 +75,57 @@ function collapseComments(e) {
             e.classList.add("active");
         } else {
             $.getJSON("/comment/" + id, function (data) {
-                $.each(data.data.reverse(), function (index, comment) {
-                    var mediaLeftElement = $("<div/>", {
-                        "class": "media-left"
-                    }).append($("<img/>", {
-                        "class": "media-object img-rounded",
-                        "src": comment.user.avatarUrl
-                    }));
 
-                    var mediaBodyElement = $("<div/>", {
-                        "class": "media-body"
-                    }).append($("<h5/>", {
-                        "class": "media-heading",
-                        "html": comment.user.name
-                    })).append($("<div/>", {
-                        "html": comment.content
-                    })).append($("<div/>", {
-                        "class": "menu"
-                    }).append($("<span/>", {
-                        "class": "pull-right",
-                        "html": moment(comment.gmtCreate).format('YYYY-MM-DD')
-                    })));
+                var subCommentContainer = $("#comment-" + id);
+                $.each(data.data, function (index, comment) {
+                // $.each(data.data.reverse(), function (index, comment) {
+                    // var mediaLeftElement = $("<div/>", {
+                    //     "class": "media-left"
+                    // }).append($("<img/>", {
+                    //     "class": "media-object img-rounded",
+                    //     "src": comment.user.avatarUrl
+                    // }));
+                    //
+                    // var mediaBodyElement = $("<div/>", {
+                    //     "class": "media-body"
+                    // }).append($("<h5/>", {
+                    //     "class": "media-heading",
+                    //     "html": comment.user.name
+                    // })).append($("<div/>", {
+                    //     "html": comment.content
+                    // })).append($("<div/>", {
+                    //     "class": "menu"
+                    // }).append($("<span/>", {
+                    //     "class": "pull-right",
+                    //     "html": moment(comment.gmtCreate).format('YYYY-MM-DD')
+                    // })));
+                    //
+                    // var mediaElement = $("<div/>", {
+                    //     "class": "media"
+                    // }).append(mediaLeftElement).append(mediaBodyElement);
+                    //
+                    // var commentElement = $("<div/>", {
+                    //     "class": "col-lg-12 col-md-12 col-sm-12 col-xs-12 comments"
+                    // }).append(mediaElement);
+                    //
+                    // subCommentContainer.prepend(commentElement);
 
-                    var mediaElement = $("<div/>", {
-                        "class": "media"
-                    }).append(mediaLeftElement).append(mediaBodyElement);
 
-                    var commentElement = $("<div/>", {
-                        "class": "col-lg-12 col-md-12 col-sm-12 col-xs-12 comments"
-                    }).append(mediaElement);
 
-                    subCommentContainer.prepend(commentElement);
+
+                var c = $("<div/>",{
+                        "class": "col-lg-12 col-md-12 col-sm-12 col-xs-12 comments",
+                    html:comment.content
+
+                });
+                subCommentContainer.prepend(c)
+
+
+
+
                 });
                 //展开二级评论
+
                 comments.addClass("in");
                 // 标记二级评论展开状态
                 e.setAttribute("data-collapse", "in");
@@ -116,6 +134,21 @@ function collapseComments(e) {
         }
     }
 }
+function collapseComments1(e){
+    var id = e.getAttribute("data-id");
+    var comments = $("#comment-" + id);
+    var collapse = e.getAttribute("data-collapse");
+    if (collapse) {
+        comments.removeClass("in");
+        e.removeAttribute("data-collapse");
+
+    }else{
+        comments.addClass("in");
+        e.setAttribute("data-collapse","in");
+    }
+}
+
+
 
 function showSelectTag() {
     $("#select-tag").show();

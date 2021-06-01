@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,11 +61,11 @@ public class CommentService {
 
     }
 //列举出所有的回复
-    public List<CommentDTO> listByQuestionId(Long id) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
             CommentExample commentExample = new CommentExample();
             commentExample.createCriteria()
                     .andParentIdEqualTo(id)
-                    .andTypeEqualTo(CommentTypeEnum.QUESTION.getType());
+                    .andTypeEqualTo(type.getType());
             commentExample.setOrderByClause("gmt_create desc");
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         if (comments.size() == 0)
