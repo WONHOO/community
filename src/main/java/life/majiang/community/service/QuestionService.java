@@ -1,12 +1,16 @@
 package life.majiang.community.service;
 
+import life.majiang.community.dto.CommentDTO;
 import life.majiang.community.dto.PaginationDTO;
 import life.majiang.community.dto.QuestionDTO;
+import life.majiang.community.enums.CommentTypeEnum;
 import life.majiang.community.exception.CustomizeErrorCode;
 import life.majiang.community.exception.CustomizeException;
+import life.majiang.community.mapper.CommentMapper;
 import life.majiang.community.mapper.QuestionExtMapper;
 import life.majiang.community.mapper.QuestionMapper;
 import life.majiang.community.mapper.UserMapper;
+import life.majiang.community.model.CommentExample;
 import life.majiang.community.model.Question;
 import life.majiang.community.model.QuestionExample;
 import life.majiang.community.model.User;
@@ -26,6 +30,8 @@ public class QuestionService {
     private QuestionMapper questionMapper;
     @Autowired
     private QuestionExtMapper questionExtMapper;
+    @Autowired
+    private CommentMapper commentMapper;
     public PaginationDTO list(Integer page, Integer size) {
 
 
@@ -160,4 +166,6 @@ public class QuestionService {
         questionExtMapper.incView(record);
 //        questionMapper.updateByExampleSelective(updateQuestion, questionExample);
     }
+
+
 }
