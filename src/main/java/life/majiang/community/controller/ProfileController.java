@@ -2,7 +2,9 @@ package life.majiang.community.controller;
 
 import life.majiang.community.dto.PaginationDTO;
 import life.majiang.community.mapper.UserMapper;
+import life.majiang.community.model.Notification;
 import life.majiang.community.model.User;
+import life.majiang.community.service.NotificationService;
 import life.majiang.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ public class ProfileController {
     @Autowired
     private QuestionService questionService;
 
+    @Autowired
+    private NotificationService notificationService;
 
     @GetMapping("/profile/{action}")
     public String profile(@PathVariable(name="action") String action,
