@@ -26,11 +26,16 @@ body{
 .profile .section{
     margin-top: 15px;
 }
+
+
+.question-tag {
+    margin-right: 5px;
+}
+
 .question-title{
-margin-top: 25px;
+    margin-top: 25px;
 }
 .community-menu{
-    display: block;
     margin-bottom: 15px;
     color: #999;
     font-size: 13px;
@@ -107,4 +112,28 @@ margin-top: 25px;
 
 .red {
     color: red !important;
+}
+
+.question-related {
+    line-height: 20px;
+    font-size: 12px;
+    margin-left: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.question-wechat {
+    width: 95%;
+}
+
+.publish-tag-tab {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.publish-tag-tab .label-info {
+    white-space: normal;
+    margin: 5px 5px;
+    display: inline-block;
 }
