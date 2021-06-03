@@ -32,4 +32,10 @@ public class QuestionController {
         model.addAttribute("relatedQuestions",relatedQuestions);
         return "question";
     }
+    @GetMapping("/profile/question/{id}")
+    public String Question1(@PathVariable("id") Long id,
+                           Model model){
+
+        return "redirect:/";
+    }
 }
